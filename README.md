@@ -12,6 +12,10 @@ Important: the output binding uses transactions, this means, that the added secr
 
 # Changelog
 
+## Version 0.0.3 - Downport to netstandard 2.0
+
+- Downported to netstandard 2.0 to support Functions V2
+
 ## Version 0.0.2 - Encryption and Decryption
 
 - Added `encryption` and `decryption` support
@@ -29,8 +33,8 @@ How to install
 4. use Postman or Curl to post the following to the extensions endpoint of your function app. If you functions url is `https://MyKeyVaultFunction.azurewebsites.net/api/HttpTrigger1?code=ABC` then your extensions endpoint is `https://MyKeyVaultFunction.azurewebsites.net/admin/host/extensions?code=ABC`
    ```json
    {
-     "Id": "SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Streams",
-     "Version": "0.0.6"
+     "Id": "SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension",
+     "Version": "0.0.3"
    }
    ```
 5. check with the returned jobid, if the job to be completed / the extension is installed `https://MyKeyVaultFunction.azurewebsites.net/admin/host/extensions/jobs/<JOBID>?code=ABC`
