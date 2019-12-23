@@ -23,14 +23,22 @@
 
 The `keyVaultEncrypt` binding can be used to encrypt data using Azure KeyVault.
 
+> ## **Note**:
+>
+> The ENCRYPT/DECRYPT operation only supports a single block of data, the size of which is dependent on the target key and the encryption algorithm to be used.
+>
+> For encryption/decryption of Azure Storage Blobs see the [KeyVaultBlobsBinding](./KEYVAULTBLOBS.MD)
+>
+> Encryption/Decryption of larger data blocks will be supported in a future version of this binding.
+
 ### DotNet
 
 When using C# or F#, the binding supports multiple Types
 
-| Type     | Description                                      | Example                                   |
-| -------- | ------------------------------------------------ | ----------------------------------------- |
-| `string` | UTF8 encoded Text representing the encoded bytes | [See example][inbound string example]     |
-| `byte[]` | encoded bytes                                    | [See example][inbound byte array example] |
+| Type     | Description                                      | Example                                    |
+| -------- | ------------------------------------------------ | ------------------------------------------ |
+| `string` | UTF8 encoded Text representing the encoded bytes | [See example](#inbound-string-example)     |
+| `byte[]` | encoded bytes                                    | [See example](#inbound-byte-array-example) |
 
 #### Inbound string example
 

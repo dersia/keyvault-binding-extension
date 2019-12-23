@@ -1,4 +1,5 @@
 ﻿using Microsoft.Azure.KeyVault.Models;
+using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Common.Models;
 using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Models;
 using System.Threading.Tasks;
 
@@ -20,5 +21,10 @@ namespace SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Client
         Task<byte[]> Encrypt(string keyName, string keyVersion, EncryptionAlgorithm encryptionAlgorithm, byte[] value);
         Task<string> Decrypt(string keyName, string keyVersion, EncryptionAlgorithm encryptionAlgorithm, string base64EncryptedValue);
         Task<byte[]> Decrypt(string keyName, string keyVersion, EncryptionAlgorithm encryptionAlgorithm, byte[] value);
+
+        Task<string> WrapKey(string keyName, string keyVersion, EncryptionAlgorithm encryptionAlgorithm, string value);
+        Task<byte[]> WrapKey(string keyName, string keyVersion, EncryptionAlgorithm encryptionAlgorithm, byte[] value);
+        Task<string> UnwrapKey(string keyName, string keyVersion, EncryptionAlgorithm encryptionAlgorithm, string base64EncryptedValue);
+        Task<byte[]> UnwrapKey(string keyName, string keyVersion, EncryptionAlgorithm encryptionAlgorithm, byte[] value);
     }
 }

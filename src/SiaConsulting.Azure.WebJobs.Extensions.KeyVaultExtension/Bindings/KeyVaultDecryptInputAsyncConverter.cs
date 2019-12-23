@@ -1,19 +1,10 @@
 ﻿using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Description;
-using Microsoft.Azure.WebJobs.Host.Bindings;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension;
-using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Exceptions;
-using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Extensions;
+using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Common.Exceptions;
+using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Common.Extensions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

@@ -2,7 +2,7 @@
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
-using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Exceptions;
+using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Common.Exceptions;
 using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Models;
 using System;
 using System.Collections.Concurrent;

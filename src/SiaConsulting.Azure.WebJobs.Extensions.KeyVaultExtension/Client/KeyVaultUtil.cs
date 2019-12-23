@@ -2,7 +2,9 @@
 using Microsoft.Azure.KeyVault.Models;
 using Newtonsoft.Json;
 using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Extensions;
+using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Common.Extensions;
 using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Models;
+using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Common.Models;
 using System;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,8 +47,17 @@ namespace SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Client
         public async Task<byte[]> Encrypt(string keyName, string keyVersion, EncryptionAlgorithm encryptionAlgorithm, byte[] value)
             => (await _keyVaultClient.EncryptAsync(_config.KeyVaultUrl, keyName, keyVersion, encryptionAlgorithm.MapAlogrithm(), value)).Result;
         public async Task<string> Decrypt(string keyName, string keyVersion, EncryptionAlgorithm encryptionAlgorithm, string base64EncryptedValue) 
-            => Encoding.UTF8.GetString(await Encrypt(keyName, keyVersion, encryptionAlgorithm, Convert.FromBase64String(base64EncryptedValue)));
+            => Encoding.UTF8.GetString(await Decrypt(keyName, keyVersion, encryptionAlgorithm, Convert.FromBase64String(base64EncryptedValue)));
         public async Task<byte[]> Decrypt(string keyName, string keyVersion, EncryptionAlgorithm encryptionAlgorithm, byte[] value) 
             => (await _keyVaultClient.DecryptAsync(_config.KeyVaultUrl, keyName, keyVersion, encryptionAlgorithm.MapAlogrithm(), value)).Result;
+
+        public async Task<string> WrapKey(string keyName, string keyVersion, EncryptionAlgorithm encryptionAlgorithm, string value)
+            => Convert.ToBase64String(await WrapKey(keyName, keyVersion, encryptionAlgorithm, Encoding.UTF8.GetBytes(value)));
+        public async Task<byte[]> WrapKey(string keyName, string keyVersion, EncryptionAlgorithm encryptionAlgorithm, byte[] value)
+            => (await _keyVaultClient.WrapKeyAsync(_config.KeyVaultUrl, keyName, keyVersion, encryptionAlgorithm.MapAlogrithm(), value)).Result;
+        public async Task<string> UnwrapKey(string keyName, string keyVersion, EncryptionAlgorithm encryptionAlgorithm, string base64EncryptedValue)
+            => Encoding.UTF8.GetString(await UnwrapKey(keyName, keyVersion, encryptionAlgorithm, Convert.FromBase64String(base64EncryptedValue)));
+        public async Task<byte[]> UnwrapKey(string keyName, string keyVersion, EncryptionAlgorithm encryptionAlgorithm, byte[] value)
+            => (await _keyVaultClient.UnwrapKeyAsync(_config.KeyVaultUrl, keyName, keyVersion, encryptionAlgorithm.MapAlogrithm(), value)).Result;
     }
 }

@@ -1,7 +1,5 @@
 ﻿using Microsoft.Azure.WebJobs;
 using Newtonsoft.Json;
-using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Bindings;
-using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Models;
 using System.Collections.Generic;
 using System.Linq;
 

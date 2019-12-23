@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Exceptions
+namespace SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Common.Exceptions
 {
     public class KeyVaultBindingException : Exception
     {

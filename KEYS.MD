@@ -28,10 +28,10 @@ The `KeyVaultKey` binding can be used to [`retrive` (`in`-binding)][in-binding] 
 
 When using C# or F#, the binding supports multiple Types for input bindings
 
-| Type         | Description                                                                       | Example                                   |
-| ------------ | --------------------------------------------------------------------------------- | ----------------------------------------- |
-| `KeyBundle`  | [`KeyBundle` is a KeyVault-SDK type][1] which can be used to get Metadata of Keys | [See example][inbound keybundle example]  |
-| `JsonWebKey` | [`JsonWebKey` is a KeyVault-SDK type][2]                                          | [See example][inbound jsonwebkey example] |
+| Type         | Description                                                                       | Example                                    |
+| ------------ | --------------------------------------------------------------------------------- | ------------------------------------------ |
+| `KeyBundle`  | [`KeyBundle` is a KeyVault-SDK type][1] which can be used to get Metadata of Keys | [See example](#inbound-keybundle-example)  |
+| `JsonWebKey` | [`JsonWebKey` is a KeyVault-SDK type][2]                                          | [See example](#inbound-jsonwebkey-example) |
 
 #### Inbound KeyBundle example
 
@@ -87,9 +87,9 @@ module.exports = async function(context, req) {
 
 When using C# or F#, the binding supports only `CreateKeyData` using the `IAsyncCollector<>` interface
 
-| Type            | Description                                                                                                 | Example                                       |
-| --------------- | ----------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| `CreateKeyData` | [`CreateKeyData` is a Type added by the Binding Extensions][3] which can be used to set Metadata of the Key | [See example][outbound createkeydata example] |
+| Type            | Description                                                                                                 | Example                                        |
+| --------------- | ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| `CreateKeyData` | [`CreateKeyData` is a Type added by the Binding Extensions][3] which can be used to set Metadata of the Key | [See example](#outbound-createkeydata-example) |
 
 #### Outbound CreateKeyData example
 

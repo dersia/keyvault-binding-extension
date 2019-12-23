@@ -1,5 +1,4 @@
 ﻿using Microsoft.Azure.WebJobs.Description;
-using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Models;
 using System;
 
 namespace SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension

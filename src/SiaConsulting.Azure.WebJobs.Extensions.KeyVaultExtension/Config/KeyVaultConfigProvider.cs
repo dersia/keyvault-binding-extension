@@ -50,11 +50,15 @@ namespace SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Config
             var keyVaultKeyAttributeRule = context.AddBindingRule<KeyVaultKeyAttribute>();
             var keyVaultEncryptAttributeRule = context.AddBindingRule<KeyVaultEncryptAttribute>();
             var keyVaultDecryptAttributeRule = context.AddBindingRule<KeyVaultDecryptAttribute>();
+            var keyVaultWrapKeyAttributeRule = context.AddBindingRule<KeyVaultWrapKeyAttribute>();
+            var keyVaultUnwrapKeyAttributeRule = context.AddBindingRule<KeyVaultUnwrapKeyAttribute>();
             var keyVaultAttributeRule = context.AddBindingRule<KeyVaultAttribute>();
             keyVaultSecretAttributeRule.BindToInput<SecretBundle>(new KeyVaultSecretInputAsyncConverter(_logger, _keyVaultClient));
             keyVaultKeyAttributeRule.BindToInput<KeyBundle>(new KeyVaultKeyInputAsyncConverter(_logger, _keyVaultClient));
             keyVaultEncryptAttributeRule.BindToInput<byte[]>(new KeyVaultEncryptInputAsyncConverter(_nameResolver,_logger, _keyVaultClient));
             keyVaultDecryptAttributeRule.BindToInput<byte[]>(new KeyVaultDecryptInputAsyncConverter(_nameResolver,_logger, _keyVaultClient));
+            keyVaultWrapKeyAttributeRule.BindToInput<byte[]>(new KeyVaultWrapKeyInputAsyncConverter(_nameResolver, _logger, _keyVaultClient));
+            keyVaultUnwrapKeyAttributeRule.BindToInput<byte[]>(new KeyVaultUnwrapKeyInputAsyncConverter(_nameResolver, _logger, _keyVaultClient));
             keyVaultSecretAttributeRule.BindToCollector<CreateSecretData>(config => new SecretDataAsyncCollector(config, _logger, _keyVaultClient));
             keyVaultKeyAttributeRule.BindToCollector<CreateKeyData>(config => new KeyDataAsyncCollector(config, _logger, _keyVaultClient));
             keyVaultAttributeRule.BindToInput<IKeyVaultUtil>(new KeyVaultInputAsyncConverter(_logger, _keyVaultClient));

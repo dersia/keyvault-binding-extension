@@ -1,7 +1,5 @@
 ﻿using Microsoft.Azure.WebJobs.Description;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension
 {
@@ -9,7 +7,10 @@ namespace SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension
     [Binding]
     public class KeyVaultAttribute : Attribute
     {
+        public KeyVaultAttribute(string keyVaultUrl) 
+            => KeyVaultUrl = keyVaultUrl;
+
         [AppSetting]
-        public string KeyVaultUrl { get; set; } = string.Empty;
+        public string KeyVaultUrl { get; set; }
     }
 }

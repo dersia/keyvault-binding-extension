@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Common</AssemblyName>
+    <RootNamespace>SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Common</RootNamespace>
+    <Version>0.0.1.0</Version>
+    <Authors>Sia Consulting Ltd.</Authors>
+    <Product>Azure Functions KeyVault Binding Common</Product>
+    <PackageId>SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Common</PackageId>
+    <Description>Common Lib for Binding Extension for Azure Functions to access Azure KeyVault</Description>
+    <Copyright>2019 Sia Consulting Ltd.</Copyright>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/dersia/keyvault-binding-extension</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/dersia/keyvault-binding-extension</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <Nullable>enable</Nullable>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\\..\\LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
+  
+</Project>

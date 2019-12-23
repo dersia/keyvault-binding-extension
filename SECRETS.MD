@@ -26,12 +26,12 @@ The `KeyVaultSecret` binding can be used to [`retrive` (`in`-binding)][in-bindin
 
 When using C# or F#, the binding supports multiple Types for input bindings
 
-| Type           | Description                                                                                      | Example                                     |
-| -------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------- |
-| `SecretBundle` | [`SecretBundle` is a KeyVault-SDK type][1] which can be used to get Metadata of the Secret       | [See example][inbound secretbundle example] |
-| `string`       | Returns the secret as string                                                                     | [See example][inbound string example]       |
-| `byte[]`       | Returns the secret as byte array, byte arrays are stored as `base64` encoded strings in KeyVault | [See example][inbound byte array example]   |
-| `T`            | Returns the secret as an open type                                                               | [See example][inbound open type example]    |
+| Type           | Description                                                                                      | Example                                      |
+| -------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------- |
+| `SecretBundle` | [`SecretBundle` is a KeyVault-SDK type][1] which can be used to get Metadata of the Secret       | [See example](#inbound-secretbundle-example) |
+| `string`       | Returns the secret as string                                                                     | [See example](#inbound-string-example)       |
+| `byte[]`       | Returns the secret as byte array, byte arrays are stored as `base64` encoded strings in KeyVault | [See example](#inbound-byte-array-example)   |
+| `T`            | Returns the secret as an open type                                                               | [See example](#inbound-open-type-example)    |
 
 #### Inbound SecretBundle example
 
@@ -120,12 +120,12 @@ module.exports = async function(context, req) {
 
 When using C# or F#, the binding supports multiple Types for output bindings using the `IAsyncCollector<>` interface
 
-| Type               | Description                                                                                                       | Example                                          |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| `CreateSecretData` | [`CreateSecretData` is a Type added by the Binding Extensions][2] which can be used to set Metadata of the Secret | [See example][outbound createsecretdata example] |
-| `string`           | Stores the secrets as string                                                                                      | [See example][outbound string example]           |
-| `byte[]`           | Stores the secret as byte array, byte arrays are stored as `base64` encoded strings in KeyVault                   | [See example][outbound byte array example]       |
-| `T`                | Stores the secret an open type as string                                                                          | [See example][outbound open type example]        |
+| Type               | Description                                                                                                       | Example                                           |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| `CreateSecretData` | [`CreateSecretData` is a Type added by the Binding Extensions][2] which can be used to set Metadata of the Secret | [See example](#outbound-createsecretdata-example) |
+| `string`           | Stores the secrets as string                                                                                      | [See example](#outbound-string-example)           |
+| `byte[]`           | Stores the secret as byte array, byte arrays are stored as `base64` encoded strings in KeyVault                   | [See example](#outbound-byte-array-example)       |
+| `T`                | Stores the secret an open type as string                                                                          | [See example](#outbound-open-type-example)        |
 
 #### Outbound CreateSecretData example
 

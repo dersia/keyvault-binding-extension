@@ -12,6 +12,10 @@ Important: the output binding uses transactions, this means, that the added secr
 
 # Changelog
 
+## Version 0.0.4 - Add Key Wrapping and Unwrapping
+
+- Added Key [Wrapping](./WRAPKEY.MD) and [Unwrapping](./UNWRAPKEY.MD) Bindings
+
 ## Version 0.0.3 - Downport to netstandard 2.0
 
 - Downported to netstandard 2.0 to support Functions V2
@@ -34,7 +38,7 @@ How to install
    ```json
    {
      "Id": "SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension",
-     "Version": "0.0.3"
+     "Version": "0.0.4"
    }
    ```
 5. check with the returned jobid, if the job to be completed / the extension is installed `https://MyKeyVaultFunction.azurewebsites.net/admin/host/extensions/jobs/<JOBID>?code=ABC`
@@ -112,6 +116,10 @@ After that you need to restart, VS, VSCode or any running version of the `Functi
 | KeyVaultEncrption | CreateKeyIfExists = true  | Key Permission Encrypt, Create |
 | KeyVaultDecrption | CreateKeyIfExists = false | Key Permission Decrypt         |
 | KeyVaultDecrption | CreateKeyIfExists = true  | Key Permission Decrypt, Create |
+| KeyVaultWrapKey   | CreateKeyIfExists = false | Key Permission Wrap            |
+| KeyVaultWrapKey   | CreateKeyIfExists = true  | Key Permission Wrap, Create    |
+| KeyVaultUnwrapKey | CreateKeyIfExists = false | Key Permission Unwrap          |
+| KeyVaultUnwrapKey | CreateKeyIfExists = true  | Key Permission Unwrap, Create  |
 
 # Features and examples:
 
@@ -119,8 +127,14 @@ After that you need to restart, VS, VSCode or any running version of the `Functi
 - [Keys](./KEYS.MD)
 - [Encryption](./ENCRYPTION.MD)
 - [Decryption](./DECRYPTION.MD)
+- [WrapKey](./WRAPKEY.MD)
+- [UnwrapKey](./UNWRAPKEY.MD)
 - Signing
 - Certificates
+
+# Blob Encyption/Decryption
+
+See [EncryptedBlob](./KEYVAULTBLOBS.md)
 
 [1]: https://azure.microsoft.com/en-us/services/key-vault
 [2]: https://azure.microsoft.com/en-us/services/functions/
