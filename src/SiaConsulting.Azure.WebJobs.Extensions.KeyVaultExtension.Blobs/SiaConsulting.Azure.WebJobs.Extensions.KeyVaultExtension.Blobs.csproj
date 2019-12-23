@@ -5,7 +5,7 @@
     <AssemblyName>SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Blobs</AssemblyName>
     <RootNamespace>SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Blobs</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.0.2.0</Version>
+    <Version>0.0.2.1</Version>
     <Authors>Sia Consulting Ltd.</Authors>
     <Product>Azure Functions KeyVault Binding</Product>
     <PackageId>SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Blobs</PackageId>
@@ -24,8 +24,7 @@
     <PackageReference Include="Microsoft.Azure.KeyVault.Extensions" Version="3.0.4" />
     <PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.3.1" />
     <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.1.1" />
-    <PackageReference Include="Microsoft.Azure.WebJobs" Version="3.0.19" />
-    <PackageReference Include="Microsoft.Azure.WebJobs.Core" Version="3.0.18" />
+    <PackageReference Include="Microsoft.Azure.WebJobs" Version="3.0.14" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="System.Text.Json" Version="4.7.0" />
   </ItemGroup>

@@ -10,6 +10,10 @@ Important: the output binding uses transactions, this means, that the added blob
 
 # Changelog
 
+## Version 0.0.2.1 - Minor Dependency fix
+
+- Fixed dependency bug
+
 ## Version 0.0.2 - Encryption and Decryption
 
 - Added `EncryptedBlob` Binding
@@ -25,7 +29,7 @@ How to install
    ```json
    {
      "Id": "SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Blobs",
-     "Version": "0.0.2"
+     "Version": "0.0.2.1"
    }
    ```
 5. check with the returned jobid, if the job to be completed / the extension is installed `https://MyEncryptedBlobFunction.azurewebsites.net/admin/host/extensions/jobs/<JOBID>?code=ABC`
