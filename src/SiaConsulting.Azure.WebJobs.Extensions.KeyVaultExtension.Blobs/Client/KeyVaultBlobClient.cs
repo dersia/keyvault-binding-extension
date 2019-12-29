@@ -2,6 +2,7 @@
 using Microsoft.Azure.KeyVault.Core;
 using Microsoft.Azure.Storage.Blob;
 using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Blobs.Extensions;
+using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Blobs.Helper;
 using SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Blobs.Models;
 using System;
 using System.Collections.Generic;
@@ -17,15 +18,17 @@ namespace SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Blobs.Client
     {
         private readonly CloudBlobClient _blobClient;
         private readonly IKeyVaultClient _keyVaultClient;
+        private readonly IKeyNameProvider _keyNameProvider;
 
-        public KeyVaultBlobClient(CloudBlobClient blobClient, IKeyVaultClient keyVaultClient)
+        public KeyVaultBlobClient(CloudBlobClient blobClient, IKeyVaultClient keyVaultClient, IKeyNameProvider keyNameProvider)
         {
             _blobClient = blobClient;
             _keyVaultClient = keyVaultClient;
+            _keyNameProvider = keyNameProvider;
         }
 
         private CloudBlobContainer GetContainer(BlobPath blobPath) => _blobClient.GetContainerReference(blobPath.ContainerName);
-        public async Task<ICloudBlob> GetBlob(BlobPath blobPath, string keyVaultUrl, string keyName, CancellationToken cancellationToken)
+        public async Task<ICloudBlob> GetBlob(BlobPath blobPath, CancellationToken cancellationToken = default)
         {
             var container = await GetOrCreateContainer(blobPath, cancellationToken);
             return await container.GetBlobReferenceFromServerAsync(blobPath.BlobName, null, new BlobRequestOptions { EncryptionPolicy = GetEncryptionPolicyForDownload() }, null, cancellationToken);
@@ -51,7 +54,8 @@ namespace SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Blobs.Client
             {
                 blob = container.GetBlobReferenceFromType(encryptedBlob.BlobPath, encryptedBlob.BlobType);
             }
-            var blobEncryptionPolicy = await GetEncryptionPolicyForUpload(config, cancellationToken);
+            var keyName = await _keyNameProvider.GetKeyByPath(encryptedBlob.BlobPath);
+            var blobEncryptionPolicy = await GetEncryptionPolicyForUpload(config, keyName, cancellationToken);
             await blob.UploadFromStreamAsync(encryptedBlob.Stream, encryptedBlob.BlobAccessCondition, new BlobRequestOptions { EncryptionPolicy = blobEncryptionPolicy }, null, cancellationToken);
             if(encryptedBlob.Properties != null)
             {
@@ -65,9 +69,9 @@ namespace SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Blobs.Client
             }
         }
 
-        private async Task<BlobEncryptionPolicy> GetEncryptionPolicyForUpload(EncryptedBlobAttribute config, CancellationToken cancellationToken)
+        private async Task<BlobEncryptionPolicy> GetEncryptionPolicyForUpload(EncryptedBlobAttribute config, string keyName, CancellationToken cancellationToken)
         {
-            var kid = await _keyVaultClient.GetKidByName(config, cancellationToken) ?? throw new ArgumentException(nameof(EncryptedBlobAttribute.KeyName));
+            var kid = await _keyVaultClient.GetKidByName(config, keyName, cancellationToken) ?? throw new ArgumentException(nameof(EncryptedBlobAttribute.KeyName));
             var keyResolver = new KeyVaultKeyResolver(_keyVaultClient);
             var key = await keyResolver.ResolveKeyAsync(kid, cancellationToken);
             var blobEncryptionPolicy = new BlobEncryptionPolicy(key, null);

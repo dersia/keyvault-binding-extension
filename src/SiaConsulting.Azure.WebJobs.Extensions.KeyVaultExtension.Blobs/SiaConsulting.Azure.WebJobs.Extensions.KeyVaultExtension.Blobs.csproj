@@ -5,7 +5,7 @@
     <AssemblyName>SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Blobs</AssemblyName>
     <RootNamespace>SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Blobs</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.0.2.1</Version>
+    <Version>0.0.3.0</Version>
     <Authors>Sia Consulting Ltd.</Authors>
     <Product>Azure Functions KeyVault Binding</Product>
     <PackageId>SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Blobs</PackageId>

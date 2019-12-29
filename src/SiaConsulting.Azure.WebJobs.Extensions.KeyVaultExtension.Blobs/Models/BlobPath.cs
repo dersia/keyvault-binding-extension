@@ -36,7 +36,7 @@ namespace SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Blobs.Models
             return result;
         }
 
-        public static BlobPath ParseAndValidate(string value, bool isContainerBinding = false)
+        public static BlobPath ParseAndValidate(string? value, bool isContainerBinding = false)
         {
 
             if (!TryParseAndValidate(value, out var errorMessage, out var path, isContainerBinding))
@@ -63,7 +63,7 @@ namespace SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Blobs.Models
 
         // similar to TryParse, but take in Url
         // does not take argument isContainerBinding since Url is blob only
-        public static bool TryParseAbsUrl(string blobUrl, out BlobPath? path)
+        public static bool TryParseAbsUrl(string? blobUrl, out BlobPath? path)
         {
             path = null;
             if (Uri.TryCreate(blobUrl, UriKind.Absolute, out var uri))
@@ -75,7 +75,7 @@ namespace SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Blobs.Models
             return false;
         }
 
-        public static bool TryParse(string value, bool isContainerBinding, out BlobPath? path)
+        public static bool TryParse(string? value, bool isContainerBinding, out BlobPath? path)
         {
             path = null;
 
@@ -104,7 +104,7 @@ namespace SiaConsulting.Azure.WebJobs.Extensions.KeyVaultExtension.Blobs.Models
             return true;
         }
 
-        private static bool TryParseAndValidate(string value, out string? errorMessage, out BlobPath? path, bool isContainerBinding = false)
+        private static bool TryParseAndValidate(string? value, out string? errorMessage, out BlobPath? path, bool isContainerBinding = false)
         {
 
             if (!isContainerBinding && TryParseAbsUrl(value, out var possiblePath))

@@ -10,6 +10,11 @@ Important: the output binding uses transactions, this means, that the added blob
 
 # Changelog
 
+## Version 0.0.3 - Fixes & IKeyNameProvider
+
+- Attribute changed to Allow `null` for BlobPath and KeyName
+- Allow Binding for IKeyNameProvider to set KeyName per BlobPath
+
 ## Version 0.0.2.1 - Minor Dependency fix
 
 - Fixed dependency bug
